@@ -14,7 +14,7 @@ final readonly class UserInputSanitazer
         foreach ($linesWithPhrases as $line) {
             $sanitazedLines[] = array_map(
                 fn(string $word) => KeyPhraseSanitazer::sanitaze($word),
-                $this->parseLine($line)
+                array_unique($this->parseLine($line))
             );
         }
 

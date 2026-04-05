@@ -58,10 +58,13 @@ final class CreatePhrases extends Command
 
         $sanitazedLines = $userInputSanitazer->sanitaze($allLines);
 
-        var_dump($sanitazedLines);
 
         $permutations = PermutationGenerator::generateSearchQueries($sanitazedLines);
 
+        $sanitazedPermutatuions = array_map(
+            fn(array $permutation) => PermutationsSanitazer::sanitazePermutation($permutation),
+            $permutations
+        );
 
         return Command::SUCCESS;
 
