@@ -9,7 +9,6 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use App\Advertise\KeyPhraseSanitazer;
 
 #[AsCommand(
     name: 'app:generate-phrases',
@@ -36,7 +35,6 @@ final class CreatePhrases extends Command
                 question: "пустая строка — завершить ввод:",
                 default: null,
                 validator: function (?string $value) {
-                    // Пропускаем валидацию для пустой строки (завершение ввода)
                     if ($value === null || trim($value) === '') {
                         return '';
                     }
@@ -66,41 +64,8 @@ final class CreatePhrases extends Command
             $permutations
         );
 
+        var_dump($sanitazedPermutatuions);
+
         return Command::SUCCESS;
-
-        // $permutations = PermutationGenerator::generate($preparedUserInput);
-        //
-        // $io->newLine(2);
-        // $io->title('Результат парсинга');
-        //
-        // $io->section('Строка 1');
-        // $io->listing($words1);
-        //
-        // $io->section('Строка 2');
-        // $io->listing($words2);
-        //
-        // $io->section('Строка 3');
-        // $io->listing($words3);
-        //
-        // $allWords = array_merge($words1, $words2, $words3);
-        // $uniqueWords = array_unique(array_map('trim', $allWords));
-        //
-        // $io->section('Все уникальные ключевые слова');
-        // $io->listing($uniqueWords);
-        //
-        // $io->success('Парсинг успешно завершён!');
-        //
-        // $io->section('Перестановки');
-        //
-        // return Command::SUCCESS;
-    }
-
-    private function parseLine(string $line): array
-    {
-        if (empty(trim($line))) {
-            return [];
-        }
-
-        return array_filter(array_map('trim', explode(',', $line)));
     }
 }
