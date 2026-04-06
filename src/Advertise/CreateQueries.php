@@ -60,6 +60,10 @@ final class CreateQueries extends Command
 
         $permutations = PermutationGenerator::generateSearchQueries($sanitazedLines);
 
+        foreach ($permutations as $permutation) {
+            $io->writeln(implode(' ', $permutation));
+        }
+
         return Command::SUCCESS;
     }
 }
