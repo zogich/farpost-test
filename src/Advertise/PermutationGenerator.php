@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Advertise;
 
-
-
 final readonly class PermutationGenerator
 {
     /**
@@ -31,22 +29,9 @@ final readonly class PermutationGenerator
 
         $backtrack(0, []);
 
-        return $result;
-    }
-
-    private function sortAllMinusWordsToEnd(array $keyPhrase): array
-    {
-        $minusWords = [];
-        $otherWords = [];
-
-        foreach ($keyPhrase as $word) {
-            if (str_starts_with($word, '-')) {
-                $minusWords[] = $word;
-                continue;
-            }
-            $otherWords[] = $word;
+        foreach ($result as &$permutation) {
+            $permutation = PermutationsSanitazer::sanitazePermutation($permutation);
         }
-
-        return array_merge($otherWords, $minusWords);
+        return $result;
     }
 }

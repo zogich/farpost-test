@@ -9,11 +9,11 @@ use PHPUnit\Framework\TestCase;
 
 final class UserInputSanitazerTest extends TestCase
 {
-    private UserInputSanitazer $sanitazer;
+    private UserInputSanitazer $sut;
 
     protected function setUp(): void
     {
-        $this->sanitazer = new UserInputSanitazer();
+        $this->sut = new UserInputSanitazer();
     }
 
     /**
@@ -23,7 +23,7 @@ final class UserInputSanitazerTest extends TestCase
     {
         $input = ['one, one, two'];
 
-        $result = $this->sanitazer->sanitaze($input);
+        $result = $this->sut->sanitaze($input);
 
         $expectedOutput = [['one', 'two']];
 
@@ -34,7 +34,7 @@ final class UserInputSanitazerTest extends TestCase
     {
         $input = ['one#, %two, th*ree, fo-ur'];
 
-        $result = $this->sanitazer->sanitaze($input);
+        $result = $this->sut->sanitaze($input);
 
         $expectedOutput = [['one', 'two', 'th ree', 'fo ur']];
 
@@ -45,7 +45,7 @@ final class UserInputSanitazerTest extends TestCase
     {
         $input = ['on sale, on purchase'];
 
-        $result = $this->sanitazer->sanitaze($input);
+        $result = $this->sut->sanitaze($input);
 
         $expectedOutput = [['+on sale', '+on purchase']];
         $this->assertEquals($expectedOutput, $result);
@@ -55,7 +55,7 @@ final class UserInputSanitazerTest extends TestCase
     {
         $input = ['Honda, Honda CRF, Honda CRF 450X'];
 
-        $result = $this->sanitazer->sanitaze($input);
+        $result = $this->sut->sanitaze($input);
 
         $expectedOutput = [[
             'Honda -CRF -450X',

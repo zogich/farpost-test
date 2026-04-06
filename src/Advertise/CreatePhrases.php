@@ -59,13 +59,6 @@ final class CreatePhrases extends Command
 
         $permutations = PermutationGenerator::generateSearchQueries($sanitazedLines);
 
-        $sanitazedPermutatuions = array_map(
-            fn(array $permutation) => PermutationsSanitazer::sanitazePermutation($permutation),
-            $permutations
-        );
-
-        var_dump($sanitazedPermutatuions);
-
         return Command::SUCCESS;
     }
 }

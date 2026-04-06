@@ -6,7 +6,7 @@ namespace App\Advertise;
 
 final readonly class PermutationsSanitazer
 {
-    public static function sanitazePermutation(array $permutation)
+    public static function sanitazePermutation(array $permutation): array
     {
 
         $simpleWords = [];
@@ -20,7 +20,7 @@ final readonly class PermutationsSanitazer
                         $word,
                         $minusWords,
                         true
-                    ) && !in_array(ltrim($word, '-'), $minusWords, true)) {
+                    ) && !in_array(ltrim($word, '-'), $simpleWords, true)) {
                         $minusWords[] = $word;
                     }
                     continue;
