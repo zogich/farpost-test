@@ -2,11 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Advertise;
+namespace App\Advertise\Sanitazers;
 
 final readonly class UserInputSanitazer
 {
 
+    /**
+     * @param string[] $linesWithPhrases
+     * @return array[]
+     */
     public function sanitaze(array $linesWithPhrases): array
     {
         $sanitazedLines = [];
@@ -26,7 +30,12 @@ final readonly class UserInputSanitazer
         return $crossMinus;
     }
 
-    private function applyCrossMinus(array $phrases)
+    /**
+     *
+     * @param string[] $phrases
+     * @return string[]
+     */
+    private function applyCrossMinus(array $phrases): array
     {
         $tokenized = [];
         foreach ($phrases as $index => $phrase) {

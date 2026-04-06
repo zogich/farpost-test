@@ -2,10 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Advertise;
+namespace App\Advertise\Sanitazers;
 
 final readonly class PermutationsSanitazer
 {
+    /**
+     *
+     * @param string[] $permutation
+     * @return string[]
+     */
     public static function sanitazePermutation(array $permutation): array
     {
 

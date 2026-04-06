@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Advertise;
 
+use App\Advertise\Sanitazers\PermutationsSanitazer;
+
 final readonly class PermutationGenerator
 {
     /**

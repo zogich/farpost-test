@@ -9,12 +9,13 @@ use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use App\Advertise\Sanitazers\UserInputSanitazer;
 
 #[AsCommand(
-    name: 'app:generate-phrases',
+    name: 'app:generate-queries',
     description: 'Команда генерирует фразы для рекламной кампании'
 )]
-final class CreatePhrases extends Command
+final class CreateQueries extends Command
 {
 
     protected function execute(InputInterface $input, OutputInterface $output): int

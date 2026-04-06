@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit;
 
-use App\Advertise\UserInputSanitazer;
+use App\Advertise\Sanitazers\UserInputSanitazer;
 use PHPUnit\Framework\TestCase;
 
 final class UserInputSanitazerTest extends TestCase

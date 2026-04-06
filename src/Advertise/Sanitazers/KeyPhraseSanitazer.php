@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Advertise;
+namespace App\Advertise\Sanitazers;
 
 final class KeyPhraseSanitazer
 {
-    public static function sanitaze(string $words): string
+    public static function sanitaze(string $keyPhrase): string
     {
-        if (empty($words)) {
+        if (empty($keyPhrase)) {
             return '';
         }
 
-        $splittedWords = explode(" ", $words);
+        $splittedWords = explode(" ", $keyPhrase);
 
         $sanitazedPhrase = '';
 
